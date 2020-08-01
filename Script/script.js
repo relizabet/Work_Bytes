@@ -4,6 +4,7 @@ $(document).ready(function () {
   let jobListings = $("div.job-listings");
   let jobLocationCity = $("textarea#job-location-city");
   let jobLocationState = $("textarea#job-location-state");
+  let jobLocationCountry = $("textarea#job-location-country");
 
   var apiKey =
     "08b0f7f65564475254bb83cd500444bd4cbc421bdbe6f0dc120b7552e822dc21";
@@ -18,7 +19,9 @@ $(document).ready(function () {
       console.log(response);
       jobListings.empty();
       for (let i = 0; i < 10; i++) {
-        let newDiv = $("<div></div>");
+        let newDiv = $("<div class='input-field'></div>")
+          .attr("data-name", response.results[i].name)
+          .addClass("jobListingClick");
         jobListings.append(newDiv);
         newDiv
           .append(`<h4>${response.results[i].name}</h4>`)
@@ -30,6 +33,8 @@ $(document).ready(function () {
       }
     });
   }
+
+  function getCoordinates(companyName, locationInputCity, locationInputState) {}
 
   function findBytes() {
     // restaurants ajax request
@@ -57,4 +62,11 @@ $(document).ready(function () {
     // call restaurants
     findBytes();
   });
+
+  // target any job listing that is being clicked
+  //   $(document).on("click", "jobListingClick", function () {
+  //       let
+  //     $(this).getElementById("");
+  //   });
+  //   getCoordinates();
 });
