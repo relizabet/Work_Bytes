@@ -1,11 +1,11 @@
 /* test files are linked */
 body {
   
-  color: white;
-  background-color: black;
+  color:black;
+  background-color:none;
 }
 h1 {
-  color:white;
+  color:black;
 }
 
 .input-field {
