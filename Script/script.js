@@ -113,22 +113,23 @@ $(document).ready(function () {
         getCoordinates(companyName, location);
     });
 
-    // save job check box click event
-    $(document).on("click", "form input", function (event) {
-        // event.preventDefault();
-
-        // get the job details (name, company, location)
-        let savedJobName = $(this).attr("data-name");
-        let savedJobCompany = $(this).attr("data-company");
-        let savedJobLocation = $(this).attr("data-location");
-
-        let savedJobObj = {
-            name : savedJobName,
-            company : savedJobCompany,
-            location: savedJobLocation
+    $(document).on("click", "form input", function () {
+        // need if statement
+        const form = $(this).closest("form");
+        if ($(this).is(":checked")) {
+          let savedJobName = form.attr("data-name");
+          let savedJobCompany = form.attr("data-company");
+          let savedJobLocation = form.attr("data-location");
+          // get the job details (name, company, location)
+          // local storage
+          let savedJobObj = {
+            name: savedJobName,
+            company: savedJobCompany,
+            location: savedJobLocation,
+          };
+          console.log(savedJobObj);
+        } else {
+          console.log("clear if out");
         }
-
-        console.log(savedJobObj);
-    })
-
+      });
 });
