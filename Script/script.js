@@ -80,7 +80,10 @@ $(document).ready(function () {
                 // console.log(response);
                 restaurantListings.empty();
                 for (var i = 0; i < response.nearby_restaurants.length; i++) {
-                    restaurantListings.append(`<p>${response.nearby_restaurants[i].restaurant.name}</p>`)
+                    let newRestaurant = $(`<a>${response.nearby_restaurants[i].restaurant.name}</a>`)
+                                            .attr("href", response.nearby_restaurants[i].restaurant.url);
+                    restaurantListings.append(newRestaurant);
+                    restaurantListings.append($("<br>"));
                 }
             },
         });
@@ -90,7 +93,6 @@ $(document).ready(function () {
     $("button.find-jobs").on("click", function () {
         let locationInputCity = jobLocationCity.val().trim();
         let locationInputState = jobLocationState.val().trim();
-        // console.
 
         // call jobs
         findJobs(locationInputCity, locationInputState);
