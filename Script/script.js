@@ -7,6 +7,8 @@ $(document).ready(function () {
     let jobLocationState = $("textarea#job-location-state");
     let jobLocationCountry = $("textarea#job-location-country");
 
+    var savedJobsArr = [];
+
     var apiKey =
         "08b0f7f65564475254bb83cd500444bd4cbc421bdbe6f0dc120b7552e822dc21";
 
@@ -17,7 +19,7 @@ $(document).ready(function () {
             //   Request URL: https://www.themuse.com/api/public/jobs?location=Aachen%2C%20Germany&page=10&descending=true
             method: "GET",
         }).then(function (response) {
-            console.log(response);
+            // console.log(response);
             jobListings.empty();
             for (let i = 0; i < 10; i++) {
                 let newDiv = $("<div class='input-field'></div>")
@@ -32,6 +34,14 @@ $(document).ready(function () {
                     //   .append(`<p>${response.results[i].contents}<p>`)
                     // limit to 2 characters
                     .append(`<p>${response.results[i].locations[0].name}</p>`);
+
+                // appending checkbox
+                var newForm = $(`<form action="#">
+                    <p><label><input type="checkbox" /><span>Save this job</span></label></p></form>`)
+                    .attr("data-name", response.results[i].name)
+                    .attr("data-company", response.results[i].company.name)
+                    .attr("data-location", response.results[i].locations[0].name);
+                newDiv.append(newForm);
             }
         });
     }
@@ -41,8 +51,8 @@ $(document).ready(function () {
         $.ajax({
             url: `http://www.mapquestapi.com/geocoding/v1/address?key=ZnAtTuiJDu6IN6Gr7hp9MS2MkxM9hNgT&location=${companyName}${location}`,
             method: "GET",
-        }).then(function(response) {
-            console.log(response);
+        }).then(function (response) {
+            // console.log(response);
 
             //get lat and lon
             lat = response.results[0].locations[0].displayLatLng.lat;
@@ -67,7 +77,7 @@ $(document).ready(function () {
                 xhr.setRequestHeader("user-key", "e49950936f801133968055049e30f777");
             }, // This inserts the api key into the HTTP header
             success: function (response) {
-                console.log(response);
+                // console.log(response);
                 restaurantListings.empty();
                 for (var i = 0; i < response.nearby_restaurants.length; i++) {
                     restaurantListings.append(`<p>${response.nearby_restaurants[i].restaurant.name}</p>`)
@@ -100,5 +110,23 @@ $(document).ready(function () {
         // call get coords function with name and location
         getCoordinates(companyName, location);
     });
+
+    // save job check box click event
+    $(document).on("click", "form input", function (event) {
+        // event.preventDefault();
+
+        // get the job details (name, company, location)
+        let savedJobName = $(this).attr("data-name");
+        let savedJobCompany = $(this).attr("data-company");
+        let savedJobLocation = $(this).attr("data-location");
+
+        let savedJobObj = {
+            name : savedJobName,
+            company : savedJobCompany,
+            location: savedJobLocation
+        }
+
+        console.log(savedJobObj);
+    })
 
 });
