@@ -4,7 +4,7 @@ body {
   background-image: url(./download2.jpg);
   color:black;
   background-color:gray;
-  border: "5px , solid";
+  border: 5px , solid black;
 }
 h1 {
   color:black;
@@ -18,7 +18,7 @@ h1 {
   background-color: silver;
   font-style: normal;
   font-size: xx-large;
- border: "5px solid";
+ border: 1px solid black;
   
 }
  
@@ -51,6 +51,12 @@ h1 {
    text-align: center;
    text-emphasis-color: black;
    font-weight: bolder;
+ }
+
+ .img {
+   border: "5px, solid green";
+   width: 500px;
+
  }
 
  
