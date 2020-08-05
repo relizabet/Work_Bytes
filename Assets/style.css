@@ -1,25 +1,59 @@
 /* test files are linked */
 body {
-  
+
+  background-image: url(./download2.jpg);
   color:black;
-  background-color:none;
+  background-color:gray;
+  border: "5px , solid";
 }
 h1 {
   color:black;
+
 }
 
 .input-field {
-  color:black;
-  font-weight: bold;
+  color:rgb(226, 25, 25);
+  font-weight: bolder;
   font-family: 'Times New Roman', Times, serif;
-  background-color: grey;
-  text-transform: lowercase;
+  background-color: silver;
+  font-style: normal;
+  font-size: xx-large;
+ border: "5px solid";
+  
 }
  
- .background-image {
-  background-image: url(/images5.jpg);
+
+ .job-listings {
+   font-family: 'Times New Roman', Times, serif;
+   font-feature-settings: "vert";
+   font-size: large;
+   background-color: rgb(170, 185, 170);
+   border: "5px solid";
+
+
+ } 
+
+ .restaurant-listings {
+   background-color: lightpink;
+   font-family: 'Times New Roman', Times, serif;
+   font-weight: bold;
+   font-style: normal;
+   font-weight: bolder;
+   border: "5px solid";
+   text-decoration-style: solid;
+
 
  }
+
+ h5 {
+   font-family: 'Times New Roman', Times, serif;
+   font-display: "center";
+   text-align: center;
+   text-emphasis-color: black;
+   font-weight: bolder;
+ }
+
+ 
 
   
 

@@ -81,13 +81,13 @@ $(document).ready(function () {
         let locationInputCity = jobLocationCity.val().trim();
         let locationInputState = jobLocationState.val().trim();
         // console.
-
+        
         // call jobs
         findJobs(locationInputCity, locationInputState);
     });
 
     //   target any job listing that is being clicked
-    $(document).on("click", "div.jobListingClick", function () {
+    $(document).on("mouseenter", "div.jobListingClick", function () {
 
         // get company name
         let companyName = $(this).attr("data-name");
@@ -100,5 +100,12 @@ $(document).ready(function () {
         // call get coords function with name and location
         getCoordinates(companyName, location);
     });
+    $(document).on("mouseleave", "div.job-listings", function(){
+        $("div.restaurant-listings").fadeOut("slow");
+        
+    })
+  // setting input field cant be empty
+ 
+ 
 
 });
