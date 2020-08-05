@@ -1,7 +1,7 @@
 /* test files are linked */
 body {
 
-  background-image: url(./download2.jpg);
+  background: url(./download2.jpg);
   color:black;
   background-color:gray;
   border: 5px , solid black;
