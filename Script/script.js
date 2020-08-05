@@ -22,7 +22,7 @@ $(document).ready(function () {
       // console.log(response);
       jobListings.empty();
       for (let i = 0; i < 10; i++) {
-        let newDiv = $("<div class='input-field'></div>")
+        let newDiv = $("<div class='input-field new-div-style'></div>")
           .attr("data-name", response.results[i].company.name)
           .attr("data-location", response.results[i].locations[0].name)
           .addClass("jobListingClick");
@@ -81,7 +81,7 @@ $(document).ready(function () {
         restaurantListings.empty();
         for (let i = 0; i < response.nearby_restaurants.length; i++) {
           let newRestaurant = $(
-            `<a>${response.nearby_restaurants[i].restaurant.name}</a>`
+            `<a class="style-url right">${response.nearby_restaurants[i].restaurant.name}</a>`
           )
             // this url is taking them to the zomato website, should we send directely to food website?
             .attr("href", response.nearby_restaurants[i].restaurant.url)
