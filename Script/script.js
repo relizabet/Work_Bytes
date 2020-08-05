@@ -3,11 +3,12 @@ $(document).ready(function () {
   let lon;
   const jobListings = $("div.job-listings");
   const restaurantListings = $("div.restaurant-listings");
-  const jobLocationCity = $("textarea#job-location-city");
-  const jobLocationState = $("textarea#job-location-state");
-  const jobLocationCountry = $("textarea#job-location-country");
+  const jobLocationCity = $("input#job-location-city");
+  const jobLocationState = $("input#job-location-state");
+  const jobLocationCountry = $("input#job-location-country");
 
   let savedJobsArr = [];
+  // $(".parallax").parallax();
 
   const apiKey =
     "08b0f7f65564475254bb83cd500444bd4cbc421bdbe6f0dc120b7552e822dc21";
@@ -22,10 +23,10 @@ $(document).ready(function () {
       // console.log(response);
       jobListings.empty();
       for (let i = 0; i < 10; i++) {
-        let newDiv = $("<div class='input-field'></div>")
+        let newDiv = $("<div class='input-field new-div-style'></div>")
           .attr("data-name", response.results[i].company.name)
           .attr("data-location", response.results[i].locations[0].name)
-          .addClass("jobListingClick");
+          .addClass("jobListingClick card");
         jobListings.append(newDiv);
         newDiv
           .append(`<h4>${response.results[i].name}</h4>`)
@@ -35,13 +36,28 @@ $(document).ready(function () {
           // limit to 2 characters
           .append(`<p>${response.results[i].locations[0].name}</p>`);
 
+        let cardAction = $("<div class='card-action'></div>");
+        newDiv.append(cardAction);
+
+        let applyNow = $("<a>Apply Now</a>")
+          .attr("href", response.results[i].refs.landing_page)
+          // blank target to open links in new tab
+          .attr("target", "_blank");
+        cardAction.append("<i class='tiny material-icons'>chevron_right</i>");
+        cardAction.append(applyNow);
+
+        // <i class="large material-icons">insert_chart</i>
+
+        // let applyIcon = $("<i class='small material-icons'></i>")
+
         // appending checkbox
         let newForm = $(`<form action="#">
                     <p><label><input type="checkbox" /><span>Save this job</span></label></p></form>`)
           .attr("data-name", response.results[i].name)
           .attr("data-company", response.results[i].company.name)
           .attr("data-location", response.results[i].locations[0].name);
-        newDiv.append(newForm);
+        // newDiv.append(newForm);
+        cardAction.append(newForm);
       }
     });
   }
@@ -74,15 +90,16 @@ $(document).ready(function () {
       dataType: "json",
       async: true,
       beforeSend: function (xhr) {
-        xhr.setRequestHeader("user-key", "e49950936f801133968055049e30f777");
+        xhr.setRequestHeader("user-key", "cdbf16f90860f66af2b545b52ab9fdbf");
       }, // This inserts the api key into the HTTP header
       success: function (response) {
         // console.log(response);
         restaurantListings.empty();
         for (let i = 0; i < response.nearby_restaurants.length; i++) {
           let newRestaurant = $(
-            `<a>${response.nearby_restaurants[i].restaurant.name}</a>`
+            `<a class="style-url right">${response.nearby_restaurants[i].restaurant.name}</a>`
           )
+            // this url is taking them to the zomato website, should we send directely to food website?
             .attr("href", response.nearby_restaurants[i].restaurant.url)
             // blank target to open links in new tab
             .attr("target", "_blank");
