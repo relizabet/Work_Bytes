@@ -9,7 +9,11 @@ h1 {
 }
 
 .input-field {
-  color: white;
+  color:black;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  background-color: grey;
+  text-transform: lowercase;
 }
  
  .background-image {
