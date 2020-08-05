@@ -3,9 +3,9 @@ $(document).ready(function () {
   let lon;
   const jobListings = $("div.job-listings");
   const restaurantListings = $("div.restaurant-listings");
-  const jobLocationCity = $("textarea#job-location-city");
-  const jobLocationState = $("textarea#job-location-state");
-  const jobLocationCountry = $("textarea#job-location-country");
+  const jobLocationCity = $("input#job-location-city");
+  const jobLocationState = $("input#job-location-state");
+  const jobLocationCountry = $("input#job-location-country");
 
   let savedJobsArr = [];
 
@@ -83,6 +83,7 @@ $(document).ready(function () {
           let newRestaurant = $(
             `<a>${response.nearby_restaurants[i].restaurant.name}</a>`
           )
+            // this url is taking them to the zomato website, should we send directely to food website?
             .attr("href", response.nearby_restaurants[i].restaurant.url)
             // blank target to open links in new tab
             .attr("target", "_blank");
