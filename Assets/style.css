@@ -63,3 +63,22 @@ a.style-url {
 /* .new-div-style {
   color: aqua !important;
 } */
+/* .restaurant-listings {
+  position: sticky;
+  top: 405px;
+}
+
+.header-container {
+  background: rgba(0, 0, 0, 0.35);
+
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+} */
