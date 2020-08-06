@@ -1,4 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Judson&display=swap");
+
+body {
+  font-family: "Judson", serif;
+}
+
 /* test files are linked */
+<<<<<<< HEAD
 body {
 
   background: url(./download2.jpg);
@@ -63,3 +70,92 @@ h1 {
 
   
 
+=======
+header.work-bytes-heading {
+  background: #000000 url(foodshare.jpg);
+  text-align: center;
+  width: 100%;
+  height: inherit;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+header h1 {
+  padding: 5%;
+  font-family: "Archivo Black", sans-serif;
+  color: white;
+  text-shadow: 1px 2px 2px rgb(14, 33, 16);
+  font-size: 5em;
+}
+
+div input.input-field {
+  background-color: rgba(255, 255, 255, 0.571) !important;
+  border-color: rgba(194, 194, 194, 0.571) !important;
+  color: rgb(255, 255, 255) !important;
+  text-shadow: 1px 2px 2px rgb(14, 33, 16);
+  padding-left: 3% !important;
+  margin-top: 10% !important;
+}
+
+a.brand-logo {
+  padding-left: 1%;
+  font-family: "Archivo Black", sans-serif;
+}
+
+a.saved-jobs {
+  /* padding-right: 2%; */
+  font-family: "Archivo Black", sans-serif;
+}
+
+label.label-text {
+  color: white !important;
+  text-shadow: 1px 2px 2px rgb(14, 33, 16);
+  font-family: "Archivo Black", sans-serif;
+}
+
+div button.find-jobs {
+  font-size: small;
+}
+
+div.button-space {
+  padding: 2%;
+}
+
+div.job-listings {
+  color: red;
+  margin-left: 8% !important;
+}
+
+div.restaurant-listings {
+  color: red !important;
+  margin: 4% !important;
+}
+
+a.style-url {
+  color: red !important;
+}
+
+/* .new-div-style {
+  color: aqua !important;
+} */
+/* .restaurant-listings {
+  position: sticky;
+  top: 405px;
+}
+
+.header-container {
+  background: rgba(0, 0, 0, 0.35);
+
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+} */
+>>>>>>> 6db4496f57cc7c677fca48b5b40a9322bb83d058
