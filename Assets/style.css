@@ -3,7 +3,7 @@ body {
 
   background: url(./download2.jpg);
   color:black;
-  background-color:gray;
+  background-color: darkkhaki;
   border: 5px , solid black;
 }
 h1 {
@@ -15,10 +15,10 @@ h1 {
   color:rgb(226, 25, 25);
   font-weight: bolder;
   font-family: 'Times New Roman', Times, serif;
-  background-color: silver;
+  background-color: darkseagreen;
   font-style: normal;
   font-size: xx-large;
- border: 1px solid black;
+ border: 1px solid tomato;
   
 }
  
