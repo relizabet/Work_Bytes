@@ -32,6 +32,16 @@ div input.input-field {
   margin-top: 10% !important;
 }
 
+a.brand-logo {
+  padding-left: 1%;
+  font-family: "Archivo Black", sans-serif;
+}
+
+a.saved-jobs {
+  /* padding-right: 2%; */
+  font-family: "Archivo Black", sans-serif;
+}
+
 label.label-text {
   color: white !important;
   text-shadow: 1px 2px 2px rgb(14, 33, 16);
