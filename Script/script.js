@@ -13,20 +13,44 @@ $(document).ready(function () {
   const apiKey =
     "08b0f7f65564475254bb83cd500444bd4cbc421bdbe6f0dc120b7552e822dc21";
 
+    function capitalize(cityName){
+      // first split the string into an array
+      return cityName.toLowerCase().split(" ")
+      // map the array to return the word with the first letter capitalized
+      .map(function(word){
+        return word.charAt(0).toUpperCase() + word.slice(1)
+      })
+      // join the arrays back together
+      .join(" ");
+      //return the string out of the function
+
+    };
+
   function findJobs(locationInputCity, locationInputState) {
     // jobs ajax request
+    const location = encodeURI(`${capitalize(locationInputCity)}, ${locationInputState.toUpperCase()}`);
     $.ajax({
-      url: `https://www.themuse.com/api/public/jobs?location=${locationInputCity}%2C%20${locationInputState}&page=1&descending=true&api_key=${apiKey}`,
+      url: `https://www.themuse.com/api/public/jobs?location=${location}&page=1&descending=true&api_key=${apiKey}`,
       //   Request URL: https://www.themuse.com/api/public/jobs?location=Aachen%2C%20Germany&page=10&descending=true
       method: "GET",
     }).then(function (response) {
       // console.log(response);
       jobListings.empty();
-      for (let i = 0; i < 10; i++) {
+      let iterations = 10;
+      for (let i = 0; i < iterations; i++) {
+        console.log(response.results[i].locations[0].name);
+        console.log(location);
+        if (response.results[i].locations[0].name !== `${capitalize(locationInputCity)}, ${locationInputState.toUpperCase()}`){
+            iterations++;
+            continue;
+            
+        }
+        
         let newDiv = $("<div class='input-field new-div-style'></div>")
           .attr("data-name", response.results[i].company.name)
           .attr("data-location", response.results[i].locations[0].name)
           .addClass("jobListingClick card");
+          
         jobListings.append(newDiv);
         newDiv
           .append(`<h4>${response.results[i].name}</h4>`)
