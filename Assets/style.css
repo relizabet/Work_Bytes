@@ -5,72 +5,6 @@ body {
 }
 
 /* test files are linked */
-<<<<<<< HEAD
-body {
-
-  background: url(./download2.jpg);
-  color:black;
-  background-color: darkkhaki;
-  border: 5px , solid black;
-}
-h1 {
-  color:black;
-
-}
-
-.input-field {
-  color:rgb(226, 25, 25);
-  font-weight: bolder;
-  font-family: 'Times New Roman', Times, serif;
-  background-color: darkseagreen;
-  font-style: normal;
-  font-size: xx-large;
- border: 1px solid tomato;
-  
-}
- 
-
- .job-listings {
-   font-family: 'Times New Roman', Times, serif;
-   font-feature-settings: "vert";
-   font-size: large;
-   background-color: rgb(170, 185, 170);
-   border: "5px solid";
-
-
- } 
-
- .restaurant-listings {
-   background-color: lightpink;
-   font-family: 'Times New Roman', Times, serif;
-   font-weight: bold;
-   font-style: normal;
-   font-weight: bolder;
-   border: "5px solid";
-   text-decoration-style: solid;
-
-
- }
-
- h5 {
-   font-family: 'Times New Roman', Times, serif;
-   font-display: "center";
-   text-align: center;
-   text-emphasis-color: black;
-   font-weight: bolder;
- }
-
- .img {
-   border: "5px, solid green";
-   width: 600px;
-
- }
-
- 
-
-  
-
-=======
 header.work-bytes-heading {
   background: #000000 url(foodshare.jpg);
   text-align: center;
@@ -158,4 +92,3 @@ body {
 main {
   flex: 1 0 auto;
 } */
->>>>>>> 6db4496f57cc7c677fca48b5b40a9322bb83d058

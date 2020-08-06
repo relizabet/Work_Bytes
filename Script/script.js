@@ -63,16 +63,6 @@ $(document).ready(function () {
         let cardAction = $("<div class='card-action'></div>");
         newDiv.append(cardAction);
 
-<<<<<<< HEAD
-    // search for jobs button click event
-    $("button.find-jobs").on("click", function () {
-        let locationInputCity = jobLocationCity.val().trim();
-        let locationInputState = jobLocationState.val().trim();
-        // console.
-        
-        // call jobs
-        findJobs(locationInputCity, locationInputState);
-=======
         let applyNow = $("<a>Apply Now</a>")
           .attr("href", response.results[i].refs.landing_page)
           // blank target to open links in new tab
@@ -93,7 +83,6 @@ $(document).ready(function () {
         // newDiv.append(newForm);
         cardAction.append(newForm);
       }
->>>>>>> 6db4496f57cc7c677fca48b5b40a9322bb83d058
     });
   }
 
@@ -105,14 +94,9 @@ $(document).ready(function () {
     }).then(function (response) {
       // console.log(response);
 
-<<<<<<< HEAD
-    //   target any job listing that is being clicked
-    $(document).on("mouseenter", "div.jobListingClick", function () {
-=======
       //get lat and lon
       lat = response.results[0].locations[0].displayLatLng.lat;
       lon = response.results[0].locations[0].displayLatLng.lng;
->>>>>>> 6db4496f57cc7c677fca48b5b40a9322bb83d058
 
       // console.log(lat, lon);
 
@@ -148,15 +132,6 @@ $(document).ready(function () {
         }
       },
     });
-<<<<<<< HEAD
-    $(document).on("mouseleave", "div.job-listings", function(){
-        $("div.restaurant-listings").fadeOut("slow");
-        
-    })
-  // setting input field cant be empty
- 
- 
-=======
   }
 
   // search for jobs button click event
@@ -173,7 +148,6 @@ $(document).ready(function () {
     // get company name
     const companyName = $(this).attr("data-name");
     // console.log(companyName);
->>>>>>> 6db4496f57cc7c677fca48b5b40a9322bb83d058
 
     // get location
     const location = $(this).attr("data-location");
