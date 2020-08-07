@@ -16,11 +16,17 @@ header.work-bytes-heading {
 }
 
 header h1 {
-  padding: 5%;
+  padding: 2%;
   font-family: "Archivo Black", sans-serif;
   color: white;
   text-shadow: 1px 2px 2px rgb(14, 33, 16);
   font-size: 5em;
+}
+
+header h2 {
+    color: white;
+    text-shadow: 1px 2px 2px rgb(14, 33, 16);
+    font-size: 1.7em;
 }
 
 div input.input-field {
@@ -57,18 +63,45 @@ div.button-space {
 }
 
 div.job-listings {
-  color: red;
+  color: #607d8b;
   margin-left: 8% !important;
 }
 
 div.restaurant-listings {
-  color: red !important;
+  color: #607d8b !important;
   margin: 4% !important;
 }
 
 a.style-url {
-  color: red !important;
+  color: ß#607d8b !important;
 }
+
+.card-action{
+  vertical-align: text-bottom;
+  font-size: 21px;
+}
+
+.card .card-action {
+  border-top: 1.5px solid #00897b;
+  position: relative;
+  padding: 16px 24px;
+}
+
+.row .col.input-style{
+  padding: 0px 1.75rem;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+#formCheckbox {
+  display: inline-flex;
+}
+
+
+
+
 
 /* .new-div-style {
   color: aqua !important;

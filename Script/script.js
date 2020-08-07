@@ -5,26 +5,24 @@ $(document).ready(function () {
   const restaurantListings = $("div.restaurant-listings");
   const jobLocationCity = $("input#job-location-city");
   const jobLocationState = $("input#job-location-state");
-  const jobLocationCountry = $("input#job-location-country");
 
   let savedJobsArr = [];
-  // $(".parallax").parallax();
 
   const apiKey =
     "08b0f7f65564475254bb83cd500444bd4cbc421bdbe6f0dc120b7552e822dc21";
 
-  function capitalize(cityName) {
-    // first split the string into an array
-    return cityName.toLowerCase().split(" ")
+    function capitalize(cityName){
+      // first split the string into an array
+      return cityName.toLowerCase().split(" ")
       // map the array to return the word with the first letter capitalized
-      .map(function (word) {
+      .map(function(word){
         return word.charAt(0).toUpperCase() + word.slice(1)
       })
       // join the arrays back together
       .join(" ");
-    //return the string out of the function
+      //return the string out of the function
 
-  };
+    };
 
   function findJobs(locationInputCity, locationInputState) {
     // jobs ajax request
@@ -38,19 +36,19 @@ $(document).ready(function () {
       jobListings.empty();
       let iterations = 10;
       for (let i = 0; i < iterations; i++) {
-        // console.log(response.results[i].locations[0].name);
-        // console.log(location);
-        if (response.results[i].locations[0].name !== `${capitalize(locationInputCity)}, ${locationInputState.toUpperCase()}`) {
-          iterations++;
-          continue;
-
+        console.log(response.results[i].locations[0].name);
+        console.log(location);
+        if (response.results[i].locations[0].name !== `${capitalize(locationInputCity)}, ${locationInputState.toUpperCase()}`){
+            iterations++;
+            continue;
+            
         }
-
+        
         let newDiv = $("<div class='input-field new-div-style'></div>")
           .attr("data-name", response.results[i].company.name)
           .attr("data-location", response.results[i].locations[0].name)
           .addClass("jobListingClick card");
-
+          
         jobListings.append(newDiv);
         newDiv
           .append(`<h4>${response.results[i].name}</h4>`)
@@ -75,12 +73,11 @@ $(document).ready(function () {
         // let applyIcon = $("<i class='small material-icons'></i>")
 
         // appending checkbox
-        let newForm = $(`<form action="#">
-                    <p><label><input type="checkbox" /><span>Save this job</span></label></p></form>`)
+        let newForm = $(`<form action="#" id="formCheckbox">
+                    <div><label><input type="checkbox" /><span>Save this job</span></label></div></form>`)
           .attr("data-name", response.results[i].name)
           .attr("data-company", response.results[i].company.name)
-          .attr("data-location", response.results[i].locations[0].name)
-          .attr("data-apply", response.results[i].refs.landing_page);
+          .attr("data-location", response.results[i].locations[0].name);
         // newDiv.append(newForm);
         cardAction.append(newForm);
       }
@@ -140,60 +137,37 @@ $(document).ready(function () {
     const locationInputCity = jobLocationCity.val().trim();
     const locationInputState = jobLocationState.val().trim();
 
+    //enter key click event
+    $("input.job-location-city").keyup(function(event) {
+        if(event.keyCode === 13) {
+            $("button.find-jobs").click();
+        }
+    });
+
+    // document.getElementById("job-location-state").addEventListener("keyup", function(event) {
+    //     if (event.keyCode === 13) {
+    //         $("button.find-jobs").click();
+    //     }
+    // });
+
+    // $("input.input-field").addEventListener("keyup", function(event) {
+    //     if (event.keyCode === 13) {
+    //         $("button.find-jobs").click();
+    //     }
+    // });
+
+    // $( "#job-location-state" ).keydown(function( event ) {
+    //     if ( event.which == 13 ) {
+    //     $("button.find-jobs").click();
+    //     }
+    // });
+
+    // document.addEventListener("keydown", function(event) {
+    //     console.log(event.which);
+    //   })
+
     // call jobs
     findJobs(locationInputCity, locationInputState);
-  });
-
-  // saved jobs button click event
-  $("a.saved-jobs").on("click", function (event) {
-    event.preventDefault();
-    // empty job and restaurant listings
-    jobListings.empty();
-    restaurantListings.empty();
-
-    // get the saved jobs array from local storage
-    savedJobsArr = JSON.parse(localStorage.getItem("savedJobs"));
-    // console.log(savedJobsArr);
-
-    for (var i = 0; i < savedJobsArr.length; i++) {
-      let newDiv = $("<div class='input-field new-div-style'></div>")
-          .attr("data-name", savedJobsArr[i].name)
-          .attr("data-location", savedJobsArr[i].location)
-          .addClass("jobListingClick card");
-
-        jobListings.append(newDiv);
-        newDiv
-          .append(`<h4>${savedJobsArr[i].name}</h4>`)
-          .append(`<p>${savedJobsArr[i].company}</p>`)
-          // needs to truncate // extract to .val()?
-          //   .append(`<p>${response.results[i].contents}<p>`)
-          // limit to 2 characters
-          .append(`<p>${savedJobsArr[i].location}</p>`);
-
-        let cardAction = $("<div class='card-action'></div>");
-        newDiv.append(cardAction);
-
-        let applyNow = $("<a>Apply Now</a>")
-          .attr("href", savedJobsArr[i].apply)
-          // blank target to open links in new tab
-          .attr("target", "_blank");
-        cardAction.append("<i class='tiny material-icons'>chevron_right</i>");
-        cardAction.append(applyNow);
-
-        // <i class="large material-icons">insert_chart</i>
-
-        // let applyIcon = $("<i class='small material-icons'></i>")
-
-        // appending checked checkbox
-        let newForm = $(`<form action="#">
-                    <p><label><input type="checkbox" checked /><span>Save this job</span></label></p></form>`)
-          .attr("data-name", savedJobsArr[i].name)
-          .attr("data-company", savedJobsArr[i].company)
-          .attr("data-location", savedJobsArr[i].location)
-          .attr("data-apply", savedJobsArr[i].apply);
-        // newDiv.append(newForm);
-        cardAction.append(newForm);
-    }
   });
 
   //   target any job listing that is being clicked
@@ -211,47 +185,22 @@ $(document).ready(function () {
   });
 
   $(document).on("click", "form input", function () {
-
+    // need if statement
     const form = $(this).closest("form");
-
-    // when checking
     if ($(this).is(":checked")) {
-
-      // get job details
       const savedJobName = form.attr("data-name");
       const savedJobCompany = form.attr("data-company");
       const savedJobLocation = form.attr("data-location");
-      const savedJobApply = form.attr("data-apply");
-
-      // save into an oject
+      // get the job details (name, company, location)
+      // local storage
       const savedJobObj = {
         name: savedJobName,
         company: savedJobCompany,
         location: savedJobLocation,
-        apply: savedJobApply
       };
-      // console.log(savedJobObj);
-
-      // push to the saved jobs array
-      savedJobsArr.push(savedJobObj);
-      // console.log(savedJobsArr);
-      // save array to local storage
-      localStorage.setItem("savedJobs", JSON.stringify(savedJobsArr));
-    }
-    // when unchecking
-    else {
-
-      // identify job to remove
-      var jobToRemove = form.attr("data-name");
-
-      // filter out of saved jobs array
-      savedJobsArr = savedJobsArr.filter(function (obj) {
-        return obj.name.indexOf(jobToRemove) === -1;
-      });
-
-      // console.log(savedJobsArr);
-      // save array to local storage
-      localStorage.setItem("savedJobs", JSON.stringify(savedJobsArr));
+      console.log(savedJobObj);
+    } else {
+      console.log("clear if out");
     }
   });
 });
