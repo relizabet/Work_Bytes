@@ -92,3 +92,21 @@ body {
 main {
   flex: 1 0 auto;
 } */
+.nav {
+  height: 100px;
+line-height: 100px;
+}
+.saved-jobs {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bolder;
+  font-style: normal;
+  background-color: none;
+  font-size: 60px;
+  font-variant-position: super;
+}
+
+.footer-copyright {
+  font-weight: bolder;
+  font-size: x-large;
+  color: #000000;
+}

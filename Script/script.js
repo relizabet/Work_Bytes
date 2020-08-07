@@ -254,4 +254,5 @@ $(document).ready(function () {
       localStorage.setItem("savedJobs", JSON.stringify(savedJobsArr));
     }
   });
+
 });
