@@ -52,10 +52,12 @@ $(document).ready(function () {
         jobListings.append(newDiv);
         newDiv
           .append(`<h4>${response.results[i].name}</h4>`)
+          .append(`<i style="float:left" class="small material-icons">domain</i>`)
           .append(`<p>${response.results[i].company.name}</p>`)
           // needs to truncate // extract to .val()?
           //   .append(`<p>${response.results[i].contents}<p>`)
           // limit to 2 characters
+          .append(`<i style="float:left" class="small material-icons">location_on</i>`)
           .append(`<p>${response.results[i].locations[0].name}</p>`);
 
         let cardAction = $("<div class='card-action'></div>");
@@ -68,9 +70,6 @@ $(document).ready(function () {
         cardAction.append("<i class='tiny material-icons'>chevron_right</i>");
         cardAction.append(applyNow);
 
-        // <i class="large material-icons">insert_chart</i>
-
-        // let applyIcon = $("<i class='small material-icons'></i>")
 
         // appending checkbox
         let newForm = $(`<form action="#" id="formCheckbox">
