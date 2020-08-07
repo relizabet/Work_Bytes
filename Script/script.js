@@ -144,6 +144,9 @@ $(document).ready(function () {
     findJobs(locationInputCity, locationInputState);
   });
 
+  // prompt user to enter something in input-field
+ 
+
   // saved jobs button click event
   $("a.saved-jobs").on("click", function (event) {
     event.preventDefault();
@@ -253,6 +256,14 @@ $(document).ready(function () {
       // save array to local storage
       localStorage.setItem("savedJobs", JSON.stringify(savedJobsArr));
     }
+    
   });
+  $(".input-field").on('input', function() {
+    var input=$(this);
+	var is_text=input.val();
+	if(is_text){input.removeClass("invalid").addClass("valid");}
+	else{input.removeClass("valid").addClass("invalid");}
+});
+
 
 });

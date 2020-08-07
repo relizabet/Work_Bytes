@@ -23,8 +23,8 @@
       </ul>
     </div>
     </div>
-    
-   
+
+
 
   </nav>
   <header class="center-align work-bytes-heading">
@@ -37,28 +37,33 @@
           <div></div>
           <div class="row">
             <div class="col s10 offset-s1 m4">
-              <input placeholder="" id="job-location-city" type="text" class="input-field" />
-              <label for="city" class="label-text">CITY</label>
+              <form action="/action_page.php">
+                <input placeholder="" id="job-location-city" name="job-location-city" required type="text"
+                  class="input-field" />
+                <label for="city" class="label-text">CITY</label>
             </div>
 
             <div class="col s10 offset-s1 m4">
-              <input placeholder="" id="job-location-state" type="text" class="input-field" />
+              <input placeholder="" id="job-location-state" name="job-location-state" required type="text"
+                class="input-field" />
               <label for="state" class="label-text">STATE</label>
             </div>
 
             <div class="col s10 offset-s1 m4">
-              <input placeholder="" id="job-location-country" type="text" class="input-field" />
+              <input placeholder="" id="job-location-country" name="job-location-country" required type="text"
+                class="input-field" />
               <label for="country" class="label-text">COUNTRY</label>
             </div>
-          
-          <div class="button-space">
-            <button class="btn waves-effect find-jobs white grey-text text-darken-4">
-              Finds jobs!
-            </button>
+            </forms>
+
+            <div class="button-space">
+              <button class="btn waves-effect find-jobs white grey-text text-darken-4">
+                Finds jobs!
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   </header>
   <!-- container div -->
 
@@ -73,7 +78,7 @@
   </div>
   </div>
 
- 
+
   <!-- Compiled and minified JavaScript -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -87,14 +92,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="Script/script.js"></script>
 
- <footer class="page-footer teal lighten-2">
-      <div class="footer-copyright black-text text-darken-2">
-        <div class="container">
-        © 2020 Copyright Text
-        <p class="black-text text-darken-4 right">Happily created by the hangry members of the Work Bytes Team</p>
-        </div>
-      </div>
-    </footer> 
+<footer class="page-footer teal lighten-2">
+  <div class="footer-copyright black-text text-darken-2">
+    <div class="container">
+      © 2020 Copyright Text
+      <p class="black-text text-darken-4 right">Happily created by the hangry members of the Work Bytes Team</p>
+    </div>
+  </div>
+</footer>
 </body>
 
 </html>
