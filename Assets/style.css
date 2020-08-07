@@ -99,10 +99,14 @@ line-height: 100px;
 .saved-jobs {
   font-family: 'Times New Roman', Times, serif;
   font-weight: bolder;
-  font-style: normal;
+  font-style: italic;
   background-color: none;
   font-size: 60px;
   font-variant-position: super;
+  padding-top: 2%;
+  padding-bottom: none;
+  font-stretch: semi-expanded;
+  
 }
 
 .footer-copyright {
