@@ -54,10 +54,12 @@ $(document).ready(function () {
         jobListings.append(newDiv);
         newDiv
           .append(`<h4>${response.results[i].name}</h4>`)
+          .append(`<i style="float:left" class="small material-icons">domain</i>`)
           .append(`<p>${response.results[i].company.name}</p>`)
           // needs to truncate // extract to .val()?
           //   .append(`<p>${response.results[i].contents}<p>`)
           // limit to 2 characters
+          .append(`<i style="float:left" class="small material-icons">location_on</i>`)
           .append(`<p>${response.results[i].locations[0].name}</p>`);
 
         let cardAction = $("<div class='card-action'></div>");
@@ -75,8 +77,8 @@ $(document).ready(function () {
         // let applyIcon = $("<i class='small material-icons'></i>")
 
         // appending checkbox
-        let newForm = $(`<form action="#">
-                    <p><label><input type="checkbox" /><span>Save this job</span></label></p></form>`)
+        let newForm = $(`<form action="#" id="formCheckbox">
+                    <div><label><input type="checkbox" /><span>Save this job</span></label></div></form>`)
           .attr("data-name", response.results[i].name)
           .attr("data-company", response.results[i].company.name)
           .attr("data-location", response.results[i].locations[0].name)
