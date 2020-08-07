@@ -188,6 +188,9 @@ $(document).ready(function () {
         let newForm = $(`<form action="#">
                     <p><label><input type="checkbox" checked /><span>Save this job</span></label></p></form>`)
           .attr("data-name", savedJobsArr[i].name)
+          .attr("data-company", savedJobsArr[i].company)
+          .attr("data-location", savedJobsArr[i].location)
+          .attr("data-apply", savedJobsArr[i].apply);
         // newDiv.append(newForm);
         cardAction.append(newForm);
     }
