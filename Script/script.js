@@ -15,20 +15,25 @@ $(document).ready(function () {
 
   function capitalize(cityName) {
     // first split the string into an array
-    return cityName.toLowerCase().split(" ")
-      // map the array to return the word with the first letter capitalized
-      .map(function (word) {
-        return word.charAt(0).toUpperCase() + word.slice(1)
-      })
-      // join the arrays back together
-      .join(" ");
+    return (
+      cityName
+        .toLowerCase()
+        .split(" ")
+        // map the array to return the word with the first letter capitalized
+        .map(function (word) {
+          return word.charAt(0).toUpperCase() + word.slice(1);
+        })
+        // join the arrays back together
+        .join(" ")
+    );
     //return the string out of the function
-
-  };
+  }
 
   function findJobs(locationInputCity, locationInputState) {
     // jobs ajax request
-    const location = encodeURI(`${capitalize(locationInputCity)}, ${locationInputState.toUpperCase()}`);
+    const location = encodeURI(
+      `${capitalize(locationInputCity)}, ${locationInputState.toUpperCase()}`
+    );
     $.ajax({
       url: `https://www.themuse.com/api/public/jobs?location=${location}&page=1&descending=true&api_key=${apiKey}`,
       //   Request URL: https://www.themuse.com/api/public/jobs?location=Aachen%2C%20Germany&page=10&descending=true
@@ -40,10 +45,14 @@ $(document).ready(function () {
       for (let i = 0; i < iterations; i++) {
         // console.log(response.results[i].locations[0].name);
         // console.log(location);
-        if (response.results[i].locations[0].name !== `${capitalize(locationInputCity)}, ${locationInputState.toUpperCase()}`) {
+        if (
+          response.results[i].locations[0].name !==
+          `${capitalize(
+            locationInputCity
+          )}, ${locationInputState.toUpperCase()}`
+        ) {
           iterations++;
           continue;
-
         }
 
         let newDiv = $("<div class='input-field new-div-style'></div>")
@@ -54,11 +63,24 @@ $(document).ready(function () {
         jobListings.append(newDiv);
         newDiv
           .append(`<h4>${response.results[i].name}</h4>`)
+          .append(`<i style="float:left" class="small material-icons">domain</i>`)
           .append(`<p>${response.results[i].company.name}</p>`)
+
+          // .append(`<p class="for-description></p>`)
+          // .append(`<p>${response.results[i].contents}<p>`)
+          .append(
+            `<p class="for-description${i}"><button class ="btn read-more${i}">Read More</button></p>`
+          )
           // needs to truncate // extract to .val()?
           //   .append(`<p>${response.results[i].contents}<p>`)
           // limit to 2 characters
+          .append(`<i style="float:left" class="small material-icons">location_on</i>`)
+
           .append(`<p>${response.results[i].locations[0].name}</p>`);
+
+        $(`button.read-more${i}`).on("click", function () {
+          $(`p.for-description${i}`).append(response.results[i].contents);
+        });
 
         let cardAction = $("<div class='card-action'></div>");
         newDiv.append(cardAction);
@@ -70,13 +92,9 @@ $(document).ready(function () {
         cardAction.append("<i class='tiny material-icons'>chevron_right</i>");
         cardAction.append(applyNow);
 
-        // <i class="large material-icons">insert_chart</i>
-
-        // let applyIcon = $("<i class='small material-icons'></i>")
-
         // appending checkbox
-        let newForm = $(`<form action="#">
-                    <p><label><input type="checkbox" /><span>Save this job</span></label></p></form>`)
+        let newForm = $(`<form action="#" id="formCheckbox">
+                    <div><label><input type="checkbox" /><span>Save this job</span></label></div></form>`)
           .attr("data-name", response.results[i].name)
           .attr("data-company", response.results[i].company.name)
           .attr("data-location", response.results[i].locations[0].name)
@@ -156,46 +174,37 @@ $(document).ready(function () {
 
     // get the saved jobs array from local storage
     savedJobsArr = JSON.parse(localStorage.getItem("savedJobs"));
-    // console.log(savedJobsArr);
 
     for (var i = 0; i < savedJobsArr.length; i++) {
       let newDiv = $("<div class='input-field new-div-style'></div>")
-          .attr("data-name", savedJobsArr[i].name)
-          .attr("data-location", savedJobsArr[i].location)
-          .addClass("jobListingClick card");
+        .attr("data-name", savedJobsArr[i].name)
+        .attr("data-location", savedJobsArr[i].location)
+        .addClass("jobListingClick card");
 
-        jobListings.append(newDiv);
-        newDiv
-          .append(`<h4>${savedJobsArr[i].name}</h4>`)
-          .append(`<p>${savedJobsArr[i].company}</p>`)
-          // needs to truncate // extract to .val()?
-          //   .append(`<p>${response.results[i].contents}<p>`)
-          // limit to 2 characters
-          .append(`<p>${savedJobsArr[i].location}</p>`);
+      jobListings.append(newDiv);
+      newDiv
+        .append(`<h4>${savedJobsArr[i].name}</h4>`)
+        .append(`<p>${savedJobsArr[i].company}</p>`)
+        .append(`<p>${savedJobsArr[i].location}</p>`);
 
-        let cardAction = $("<div class='card-action'></div>");
-        newDiv.append(cardAction);
+      let cardAction = $("<div class='card-action'></div>");
+      newDiv.append(cardAction);
 
-        let applyNow = $("<a>Apply Now</a>")
-          .attr("href", savedJobsArr[i].apply)
-          // blank target to open links in new tab
-          .attr("target", "_blank");
-        cardAction.append("<i class='tiny material-icons'>chevron_right</i>");
-        cardAction.append(applyNow);
+      let applyNow = $("<a>Apply Now</a>")
+        .attr("href", savedJobsArr[i].apply)
+        // blank target to open links in new tab
+        .attr("target", "_blank");
+      cardAction.append("<i class='tiny material-icons'>chevron_right</i>");
+      cardAction.append(applyNow);
 
-        // <i class="large material-icons">insert_chart</i>
-
-        // let applyIcon = $("<i class='small material-icons'></i>")
-
-        // appending checked checkbox
-        let newForm = $(`<form action="#">
+      let newForm = $(`<form action="#">
                     <p><label><input type="checkbox" checked /><span>Save this job</span></label></p></form>`)
-          .attr("data-name", savedJobsArr[i].name)
-          .attr("data-company", savedJobsArr[i].company)
-          .attr("data-location", savedJobsArr[i].location)
-          .attr("data-apply", savedJobsArr[i].apply);
-        // newDiv.append(newForm);
-        cardAction.append(newForm);
+        .attr("data-name", savedJobsArr[i].name)
+        .attr("data-company", savedJobsArr[i].company)
+        .attr("data-location", savedJobsArr[i].location)
+        .attr("data-apply", savedJobsArr[i].apply);
+      // newDiv.append(newForm);
+      cardAction.append(newForm);
     }
   });
 
@@ -214,12 +223,10 @@ $(document).ready(function () {
   });
 
   $(document).on("click", "form input", function () {
-
     const form = $(this).closest("form");
 
     // when checking
     if ($(this).is(":checked")) {
-
       // get job details
       const savedJobName = form.attr("data-name");
       const savedJobCompany = form.attr("data-company");
@@ -231,7 +238,7 @@ $(document).ready(function () {
         name: savedJobName,
         company: savedJobCompany,
         location: savedJobLocation,
-        apply: savedJobApply
+        apply: savedJobApply,
       };
       // console.log(savedJobObj);
 
@@ -243,7 +250,6 @@ $(document).ready(function () {
     }
     // when unchecking
     else {
-
       // identify job to remove
       var jobToRemove = form.attr("data-name");
 
