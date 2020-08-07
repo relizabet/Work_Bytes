@@ -258,12 +258,7 @@ $(document).ready(function () {
     }
     
   });
-  $(".input-field").on('input', function() {
-    var input=$(this);
-	var is_text=input.val();
-	if(is_text){input.removeClass("invalid").addClass("valid");}
-	else{input.removeClass("valid").addClass("invalid");}
-});
+  
 
 
 });
