@@ -21,7 +21,7 @@
   <body>
     <!-- testing for pull request -->
     <nav>
-      <div class="nav-wrapper">
+      <div class="nav-wrapper teal darken-1">
         <a href="#" class="brand-logo">Logo</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="" class="saved-jobs">Saved Jobs</a></li>
@@ -30,14 +30,17 @@
     </nav>
     <header class="center-align work-bytes-heading">
       <h1>WORK BYTES</h1>
+      <h2 class="header col s12">Choose your next role next to the best restaurant in town</h5>
       <div class="container">
         <!-- first row -->
         <div class="row">
+          
           <div class="col s12 center-align">
             <!-- work bytes header -->
             <div></div>
             <div class="row">
-              <div class="col s10 offset-s1 m4">
+              <form id="form"> 
+              <div class="col s12 m6 input-style">
                 <input
                   placeholder=""
                   id="job-location-city"
@@ -47,7 +50,7 @@
                 <label for="city" class="label-text">CITY</label>
               </div>
 
-              <div class="col s10 offset-s1 m4">
+              <div class="col s12 m6 input-style">
                 <input
                   placeholder=""
                   id="job-location-state"
@@ -56,12 +59,13 @@
                 />
                 <label for="state" class="label-text">STATE</label>
               </div>
+              </form>
             </div>
             <div class="button-space">
               <button
                 class="btn waves-effect find-jobs white grey-text text-darken-4"
               >
-                Finds jobs!
+                Find jobs!
               </button>
             </div>
           </div>
@@ -74,7 +78,7 @@
     <div class="container">
       <div class="row">
         <!-- first column for job listings -->
-        <div class="col s5 job-listings"></div>
+        <div class="col s12 m5 job-listings"></div>
         <!-- second column for restaurant listings -->
         <div class="col s5 restaurant-listings right"></div>
       </div>
