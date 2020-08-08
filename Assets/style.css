@@ -4,8 +4,6 @@ body {
   font-family: "Judson", serif;
 }
 
-/* test files are linked */
-
 /* header styles */
 header.work-bytes-heading {
   background: #000000 url(foodshare.jpg);
@@ -26,9 +24,9 @@ header h1 {
 }
 
 header h2 {
-    color: white;
-    text-shadow: 1px 2px 2px rgb(14, 33, 16);
-    font-size: 1.7em;
+  color: white;
+  text-shadow: 1px 2px 2px rgb(14, 33, 16);
+  font-size: 1.7em;
 }
 
 /* input styling */
@@ -80,14 +78,12 @@ a.style-url {
   color: ß#607d8b !important;
 }
 
-.card-action{
+.card-action {
   vertical-align: text-bottom;
   font-size: 21px;
 }
 
-
-
-.row .col.input-style{
+.row .col.input-style {
   padding: 0px 1.75rem;
 }
 
@@ -102,7 +98,7 @@ a.style-url {
 
 /* highlight card when hovered */
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* display save jobs on same line as apply jobs */
@@ -111,11 +107,13 @@ a.style-url {
 }
 
 /* override apply now materialize css */
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+.card
+  .card-action
+  a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
   color: #ffab40;
   margin-right: 24px;
-  -webkit-transition: color .3s ease;
-  transition: color .3s ease;
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
   text-transform: unset;
   font-size: 1.1rem;
 }
@@ -133,38 +131,16 @@ div.job-listings h4 {
 
 /* resize location icon */
 i.small {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
-
 
 a.restaurant-styling {
-margin: 5px;
-font-size: 24px;
-text-align: center !important;
-justify-content: center;
-}
-
-/* .new-div-style {
-  color: aqua !important;
-}  */
- .restaurant-listings {
-  
+  margin: 5px;
   font-size: 24px;
-
+  text-align: center !important;
+  justify-content: center;
 }
 
-/* .header-container {
-  background: rgba(0, 0, 0, 0.35);
-
+.restaurant-listings {
+  font-size: 24px;
 }
-
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-main {
-  flex: 1 0 auto;
-}
- */
