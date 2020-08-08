@@ -7,6 +7,7 @@ $(document).ready(function () {
   const jobLocationState = $("input#job-location-state");
   const jobLocationCountry = $("input#job-location-country");
 
+  $('.collapsible').collapsible();
   let savedJobsArr = [];
   // $(".parallax").parallax();
 
@@ -49,19 +50,42 @@ $(document).ready(function () {
         let newDiv = $("<div class='input-field new-div-style'></div>")
           .attr("data-name", response.results[i].company.name)
           .attr("data-location", response.results[i].locations[0].name)
+          .attr("",response.results[i].contents)
           .addClass("jobListingClick card");
+        console.log(response.results[i]);
+
+/* 
+<ul class="collapsible">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+        <li>
+          <div class="collapsible-header">Second</div>
+          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+      </ul>
+ */
+
 
         jobListings.append(newDiv);
         newDiv
           .append(`<h4>${response.results[i].name}</h4>`)
           .append(`<p>${response.results[i].company.name}</p>`)
           // needs to truncate // extract to .val()?
-          //   .append(`<p>${response.results[i].contents}<p>`)
+          //   
           // limit to 2 characters
           .append(`<p>${response.results[i].locations[0].name}</p>`);
 
         let cardAction = $("<div class='card-action'></div>");
-        newDiv.append(cardAction);
+        newDiv.append(cardAction)
+        /* 
+                .append(`<p>${response.results[i].contents}<p>`) */
+        ;
 
         let applyNow = $("<a>Apply Now</a>")
           .attr("href", response.results[i].refs.landing_page)
@@ -90,7 +114,7 @@ $(document).ready(function () {
   function getCoordinates(companyName, location) {
     // coordinates ajax request
     $.ajax({
-      url: `http://www.mapquestapi.com/geocoding/v1/address?key=ZnAtTuiJDu6IN6Gr7hp9MS2MkxM9hNgT&location=${companyName}${location}`,
+      url: `https://www.mapquestapi.com/geocoding/v1/address?key=ZnAtTuiJDu6IN6Gr7hp9MS2MkxM9hNgT&location=${companyName}${location}`,
       method: "GET",
     }).then(function (response) {
       // console.log(response);
@@ -122,8 +146,8 @@ $(document).ready(function () {
         restaurantListings.empty();
         for (let i = 0; i < response.nearby_restaurants.length; i++) {
           let newRestaurant = $(
-            `<a class="style-url right">${response.nearby_restaurants[i].restaurant.name}</a>`
-          )
+              `<a class="style-url right">${response.nearby_restaurants[i].restaurant.name}</a>`
+            )
             // this url is taking them to the zomato website, should we send directely to food website?
             .attr("href", response.nearby_restaurants[i].restaurant.url)
             // blank target to open links in new tab
@@ -157,42 +181,42 @@ $(document).ready(function () {
 
     for (var i = 0; i < savedJobsArr.length; i++) {
       let newDiv = $("<div class='input-field new-div-style'></div>")
-          .attr("data-name", savedJobsArr[i].name)
-          .attr("data-location", savedJobsArr[i].location)
-          .addClass("jobListingClick card");
+        .attr("data-name", savedJobsArr[i].name)
+        .attr("data-location", savedJobsArr[i].location)
+        .addClass("jobListingClick card");
 
-        jobListings.append(newDiv);
-        newDiv
-          .append(`<h4>${savedJobsArr[i].name}</h4>`)
-          .append(`<p>${savedJobsArr[i].company}</p>`)
-          // needs to truncate // extract to .val()?
-          //   .append(`<p>${response.results[i].contents}<p>`)
-          // limit to 2 characters
-          .append(`<p>${savedJobsArr[i].location}</p>`);
+      jobListings.append(newDiv);
+      newDiv
+        .append(`<h4>${savedJobsArr[i].name}</h4>`)
+        .append(`<p>${savedJobsArr[i].company}</p>`)
+        // needs to truncate // extract to .val()?
+        //   .append(`<p>${response.results[i].contents}<p>`)
+        // limit to 2 characters
+        .append(`<p>${savedJobsArr[i].location}</p>`);
 
-        let cardAction = $("<div class='card-action'></div>");
-        newDiv.append(cardAction);
+      let cardAction = $("<div class='card-action'></div>");
+      newDiv.append(cardAction);
 
-        let applyNow = $("<a>Apply Now</a>")
-          .attr("href", savedJobsArr[i].apply)
-          // blank target to open links in new tab
-          .attr("target", "_blank");
-        cardAction.append("<i class='tiny material-icons'>chevron_right</i>");
-        cardAction.append(applyNow);
+      let applyNow = $("<a>Apply Now</a>")
+        .attr("href", savedJobsArr[i].apply)
+        // blank target to open links in new tab
+        .attr("target", "_blank");
+      cardAction.append("<i class='tiny material-icons'>chevron_right</i>");
+      cardAction.append(applyNow);
 
-        // <i class="large material-icons">insert_chart</i>
+      // <i class="large material-icons">insert_chart</i>
 
-        // let applyIcon = $("<i class='small material-icons'></i>")
+      // let applyIcon = $("<i class='small material-icons'></i>")
 
-        // appending checked checkbox
-        let newForm = $(`<form action="#">
+      // appending checked checkbox
+      let newForm = $(`<form action="#">
                     <p><label><input type="checkbox" checked /><span>Save this job</span></label></p></form>`)
-          .attr("data-name", savedJobsArr[i].name)
-          .attr("data-company", savedJobsArr[i].company)
-          .attr("data-location", savedJobsArr[i].location)
-          .attr("data-apply", savedJobsArr[i].apply);
-        // newDiv.append(newForm);
-        cardAction.append(newForm);
+        .attr("data-name", savedJobsArr[i].name)
+        .attr("data-company", savedJobsArr[i].company)
+        .attr("data-location", savedJobsArr[i].location)
+        .attr("data-apply", savedJobsArr[i].apply);
+      // newDiv.append(newForm);
+      cardAction.append(newForm);
     }
   });
 
