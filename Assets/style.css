@@ -15,14 +15,12 @@ header.work-bytes-heading {
   overflow: hidden;
 }
 
-
 header h1 {
-  padding: 5%;
+  padding: 2%;
   font-family: "Archivo Black", sans-serif;
   color: white;
   text-shadow: 1px 2px 2px rgb(14, 33, 16);
-  font-size: 5em;
-  font-size: 3.5em;
+  font-size: 2em;
 }
 
 header h2 {
@@ -31,6 +29,7 @@ header h2 {
   font-size: 1.7em;
 }
 
+/* input styling */
 div input.input-field {
   background-color: rgba(255, 255, 255, 0.571) !important;
   border-color: rgba(194, 194, 194, 0.571) !important;
@@ -39,11 +38,13 @@ div input.input-field {
   margin-top: 10% !important;
 }
 
+/* nav bar styling - logo */
 a.brand-logo {
   padding-left: 1%;
   font-family: "Archivo Black", sans-serif;
 }
 
+/* nav bar styling - save jobs link */
 a.saved-jobs {
   /* padding-right: 2%; */
   font-family: "Archivo Black", sans-serif;
@@ -64,17 +65,15 @@ div.button-space {
 }
 
 div.job-listings {
-  color: red;
-  margin-left: 8% !important;
+  color: #607d8b;
 }
 
 div.restaurant-listings {
-  color: red !important;
+  color: #607d8b !important;
   margin: 4% !important;
 }
 
 a.style-url {
-  color: red !important;
   color: ß#607d8b !important;
 }
 
@@ -144,4 +143,3 @@ a.restaurant-styling {
 .restaurant-listings {
   font-size: 24px;
 }
-
