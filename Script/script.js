@@ -151,6 +151,7 @@ $(document).ready(function () {
         restaurantListings.empty();
         const restaurantHeader = $("<h2>").text("Nearby Restaurants");
         restaurantListings.append(restaurantHeader);
+        restaurantListings.addClass("card");
         for (let i = 0; i < response.nearby_restaurants.length; i++) {
           let newRestaurant = $(
             `<a class="style-url right">${response.nearby_restaurants[i].restaurant.name}</a>`
