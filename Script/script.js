@@ -63,18 +63,22 @@ $(document).ready(function () {
         jobListings.append(newDiv);
         newDiv
           .append(`<h4>${response.results[i].name}</h4>`)
-          .append(`<i style="float:left" class="small material-icons">domain</i>`)
+          .append(
+            `<i style="float:left" class="small material-icons">domain</i>`
+          )
           .append(`<p>${response.results[i].company.name}</p>`)
 
           // .append(`<p class="for-description></p>`)
           // .append(`<p>${response.results[i].contents}<p>`)
           .append(
-            `<p class="for-description${i}"><button class ="btn read-more${i}">Read More</button></p>`
+            `<div class="for-description${i}"><button class ="btn read-more${i}">Read More</button></div>`
           )
           // needs to truncate // extract to .val()?
           //   .append(`<p>${response.results[i].contents}<p>`)
           // limit to 2 characters
-          .append(`<i style="float:left" class="small material-icons">location_on</i>`)
+          .append(
+            `<i style="float:left" class="small material-icons">location_on</i>`
+          )
 
           .append(`<p>${response.results[i].locations[0].name}</p>`);
 
