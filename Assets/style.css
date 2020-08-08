@@ -15,13 +15,16 @@ header.work-bytes-heading {
   overflow: hidden;
 }
 
+
 header h1 {
   padding: 5%;
   font-family: "Archivo Black", sans-serif;
   color: white;
   text-shadow: 1px 2px 2px rgb(14, 33, 16);
   font-size: 5em;
+  font-size: 3.5em;
 }
+
 
 div input.input-field {
   background-color: rgba(255, 255, 255, 0.571) !important;
@@ -68,6 +71,63 @@ div.restaurant-listings {
 
 a.style-url {
   color: red !important;
+  color: ß#607d8b !important;
+}
+
+.card-action {
+  vertical-align: text-bottom;
+  font-size: 21px;
+}
+
+.row .col.input-style {
+  padding: 0px 1.75rem;
+}
+
+/* **styling for the job cards** */
+
+/* styling card action */
+.card .card-action {
+  border-top: 1.5px solid #00897b;
+  position: relative;
+  padding: 16px 24px;
+}
+
+/* highlight card when hovered */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* display save jobs on same line as apply jobs */
+#formCheckbox {
+  display: inline-flex;
+}
+
+/* override apply now materialize css */
+.card
+  .card-action
+  a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+  color: #ffab40;
+  margin-right: 24px;
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+  text-transform: unset;
+  font-size: 1.1rem;
+}
+
+/* change font size of job description */
+div.job-listings h4 {
+  font-size: 2rem;
+}
+
+/* fit cards to column at 50% */
+.row .col.m5 {
+  width: 50%;
+  margin-left: auto;
+}
+
+/* resize location icon */
+i.small {
+  font-size: 1.5rem;
 }
 
 /* .new-div-style {
