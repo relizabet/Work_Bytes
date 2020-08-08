@@ -4,7 +4,7 @@ body {
   font-family: "Judson", serif;
 }
 
-/* test files are linked */
+/* header styles */
 header.work-bytes-heading {
   background: #000000 url(foodshare.jpg);
   text-align: center;
@@ -25,12 +25,16 @@ header h1 {
   font-size: 3.5em;
 }
 
+header h2 {
+  color: white;
+  text-shadow: 1px 2px 2px rgb(14, 33, 16);
+  font-size: 1.7em;
+}
 
 div input.input-field {
   background-color: rgba(255, 255, 255, 0.571) !important;
   border-color: rgba(194, 194, 194, 0.571) !important;
-  color: rgb(255, 255, 255) !important;
-  text-shadow: 1px 2px 2px rgb(14, 33, 16);
+  color: rgb(0, 0, 0) !important;
   padding-left: 3% !important;
   margin-top: 10% !important;
 }
@@ -130,56 +134,13 @@ i.small {
   font-size: 1.5rem;
 }
 
-
 a.restaurant-styling {
-margin: 5px;
-font-size: 24px;
-text-align: center !important;
-justify-content: center;
-}
-
-/* .new-div-style {
-  color: aqua !important;
-}  */
- .restaurant-listings {
-  
+  margin: 5px;
   font-size: 24px;
-
+  text-align: center !important;
+  justify-content: center;
 }
 
-/* .header-container {
-  background: rgba(0, 0, 0, 0.35);
-
-}
-
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-main {
-  flex: 1 0 auto;
-} */
-.nav {
-  height: 100px;
-line-height: 100px;
-}
-.saved-jobs {
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: bolder;
-  font-style: italic;
-  background-color: none;
-  font-size: 60px;
-  font-variant-position: super;
-  padding-top: 2%;
-  padding-bottom: none;
-  font-stretch: semi-expanded;
-  
-}
-
-.footer-copyright {
-  font-weight: bolder;
-  font-size: x-large;
-  color: #000000;
+.restaurant-listings {
+  font-size: 24px;
 }

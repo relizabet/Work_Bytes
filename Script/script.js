@@ -1,34 +1,40 @@
 $(document).ready(function () {
+  // get latitude and longitude
   let lat;
   let lon;
+
+  // get elements to display listings
   const jobListings = $("div.job-listings");
   const restaurantListings = $("div.restaurant-listings");
+  // get input to store city input
   const jobLocationCity = $("input#job-location-city");
   const jobLocationState = $("input#job-location-state");
-  const jobLocationCountry = $("input#job-location-country");
 
+  // save jobs into empty array
   let savedJobsArr = [];
-  // $(".parallax").parallax();
 
+  // apikey for The Muse
   const apiKey =
     "08b0f7f65564475254bb83cd500444bd4cbc421bdbe6f0dc120b7552e822dc21";
 
+  // ensure city input has correct capitalization
   function capitalize(cityName) {
-    // first split the string into an array
+    // split the string into an array
     return (
       cityName
-      .toLowerCase()
-      .split(" ")
-      // map the array to return the word with the first letter capitalized
-      .map(function (word) {
-        return word.charAt(0).toUpperCase() + word.slice(1);
-      })
-      // join the arrays back together
-      .join(" ")
+        .toLowerCase()
+        .split(" ")
+        // map the array to return the word with the first letter capitalized
+        .map(function (word) {
+          return word.charAt(0).toUpperCase() + word.slice(1);
+        })
+        // join the arrays back together
+        .join(" ")
     );
     //return the string out of the function
   }
 
+  // api call to return jobs from desired city
   function findJobs(locationInputCity, locationInputState) {
     // jobs ajax request
     const location = encodeURI(
@@ -36,15 +42,12 @@ $(document).ready(function () {
     );
     $.ajax({
       url: `https://www.themuse.com/api/public/jobs?location=${location}&page=1&descending=true&api_key=${apiKey}`,
-      //   Request URL: https://www.themuse.com/api/public/jobs?location=Aachen%2C%20Germany&page=10&descending=true
       method: "GET",
     }).then(function (response) {
-      // console.log(response);
       jobListings.empty();
       let iterations = 10;
+      // catch capitalization issues
       for (let i = 0; i < iterations; i++) {
-        // console.log(response.results[i].locations[0].name);
-        // console.log(location);
         if (
           response.results[i].locations[0].name !==
           `${capitalize(
@@ -55,37 +58,48 @@ $(document).ready(function () {
           continue;
         }
 
+        // add div and attributes to job listings
         let newDiv = $("<div class='input-field new-div-style'></div>")
           .attr("data-name", response.results[i].company.name)
           .attr("data-location", response.results[i].locations[0].name)
           .addClass("jobListingClick card");
 
+        // append job listings
         jobListings.append(newDiv);
         newDiv
           .append(`<h4>${response.results[i].name}</h4>`)
           .append(
-            `<i style="float:left" class="small material-icons">domain</i>`
+            `<i style="float:left;" class="small material-icons">domain</i>`
           )
           .append(`<p>${response.results[i].company.name}</p>`)
-
-          // .append(`<p class="for-description></p>`)
-          // .append(`<p>${response.results[i].contents}<p>`)
           .append(
-            `<div class="for-description${i}"><button class ="btn read-more${i}">Read More</button></div>`
+            `<p class="for-description${i}" style="margin: .5em;"><button class ="btn read-more${i}">Read More</button></p>`
           )
-          // needs to truncate // extract to .val()?
-          //   .append(`<p>${response.results[i].contents}<p>`)
-          // limit to 2 characters
           .append(
-            `<i style="float:left" class="small material-icons">location_on</i>`
+            `<i style="float:left;" class="small material-icons">location_on</i>`
           )
+          .append(
+            `<p style="margin: .2em;">${response.results[i].locations[0].name}</p>`
+          );
 
-          .append(`<p>${response.results[i].locations[0].name}</p>`);
+        let showDescription = false;
 
+        // get job description information
         $(`button.read-more${i}`).on("click", function () {
-          $(`p.for-description${i}`).append(response.results[i].contents);
+          // changes boolean to true
+          showDescription = !showDescription;
+          let description = response.results[i].contents;
+          if (showDescription) {
+            $(`p.for-description${i}`).append(description);
+          } else {
+            showDescription = !showDescription;
+            $(`p.for-description${i}`)
+              .empty()
+              .append(`<button class ="btn read-more${i}">Read More</button>`);
+          }
         });
 
+        // add card action div/class for card styling on job listings
         let cardAction = $("<div class='card-action'></div>");
         newDiv.append(cardAction);
 
@@ -103,7 +117,6 @@ $(document).ready(function () {
           .attr("data-company", response.results[i].company.name)
           .attr("data-location", response.results[i].locations[0].name)
           .attr("data-apply", response.results[i].refs.landing_page);
-        // newDiv.append(newForm);
         cardAction.append(newForm);
       }
     });
@@ -115,21 +128,16 @@ $(document).ready(function () {
       url: `http://www.mapquestapi.com/geocoding/v1/address?key=ZnAtTuiJDu6IN6Gr7hp9MS2MkxM9hNgT&location=${companyName}${location}`,
       method: "GET",
     }).then(function (response) {
-      // console.log(response);
-
       //get lat and lon
       lat = response.results[0].locations[0].displayLatLng.lat;
       lon = response.results[0].locations[0].displayLatLng.lng;
-
-      // console.log(lat, lon);
 
       // call find bytes function with coords
       findBytes(lat, lon);
     });
   }
 
-  // need to catch random 400 errors ??? ask teacher
-  // ???????????????????????????
+  // get restauarants based on job location
   function findBytes(lat, lon) {
     // restaurants ajax request
     $.ajax({
@@ -140,42 +148,22 @@ $(document).ready(function () {
         xhr.setRequestHeader("user-key", "cdbf16f90860f66af2b545b52ab9fdbf");
       }, // This inserts the api key into the HTTP header
       success: function (response) {
-        // console.log(response);
         restaurantListings.empty();
         const restaurantHeader = $("<h2>").text("Nearby Restaurants");
         restaurantListings.append(restaurantHeader);
+        restaurantListings.addClass("card");
         for (let i = 0; i < response.nearby_restaurants.length; i++) {
-          let newRestaurant = $(`<a class="style-url right">${response.nearby_restaurants[i].restaurant.name}</a>`)
-            // this url is taking them to the zomato website, should we send directely to food website?
+          let newRestaurant = $(
+            `<a class="style-url right">${response.nearby_restaurants[i].restaurant.name}</a>`
+          )
+            // takes user to zomato page for rest
             .attr("href", response.nearby_restaurants[i].restaurant.url)
             // blank target to open links in new tab
             .attr("target", "_blank")
             .addClass("restaurant-style");
           restaurantListings.append(newRestaurant);
           restaurantListings.append($("<br>"));
-          /* let cardAction = $("<div class='card-action'></div>"); */
-        
-         /*  var restaurantImg = $("<img>").attr("src", response.restaurants[i].featured_image); */
-          /* newRestaurant.append(restaurantImg); */
-          console.log(response);
-          /* restaurantListings.append(restaurantDiv); */
-
-          /* restaurantDiv = $("<div class='input-field restaurant-div-style'></div>")
-            .attr("name", response.nearby_restaurants[i].restaurant.name) */
-          /* 
-                    $(`<a class="style-url right">${response.nearby_restaurants[i].restaurant.name}</a>`) */
-          // this url is taking them to the zomato website, should we send directely to food website?
-          /* .attr("href", response.nearby_restaurants[i].restaurant.url)
-            // blank target to open links in new tab
-            .attr("target", "_blank")
-          
-          restaurantListings.append($("<br>"));  */
-          /* 
-          restaurantListings.append(cardAction); */
-          /*           .attr("featured_image", response.restaurants[i].featured_image);
-           */
         }
-
       },
     });
   }
@@ -225,12 +213,11 @@ $(document).ready(function () {
       cardAction.append(applyNow);
 
       let newForm = $(`<form action="#">
-                    <p><label><input type="checkbox" checked /><span>Save this job</span></label></p></form>`)
+        <p><label><input type="checkbox" checked /><span>Save this job</span></label></p></form>`)
         .attr("data-name", savedJobsArr[i].name)
         .attr("data-company", savedJobsArr[i].company)
         .attr("data-location", savedJobsArr[i].location)
         .attr("data-apply", savedJobsArr[i].apply);
-      // newDiv.append(newForm);
       cardAction.append(newForm);
     }
   });
@@ -239,11 +226,9 @@ $(document).ready(function () {
   $(document).on("click", "div.jobListingClick", function () {
     // get company name
     const companyName = $(this).attr("data-name");
-    // console.log(companyName);
 
     // get location
     const location = $(this).attr("data-location");
-    // console.log(location);
 
     // call get coords function with name and location
     getCoordinates(companyName, location);
@@ -252,7 +237,7 @@ $(document).ready(function () {
   $(document).on("click", "form input", function () {
     const form = $(this).closest("form");
 
-    // when checking
+    // when checked
     if ($(this).is(":checked")) {
       // get job details
       const savedJobName = form.attr("data-name");
@@ -267,15 +252,13 @@ $(document).ready(function () {
         location: savedJobLocation,
         apply: savedJobApply,
       };
-      // console.log(savedJobObj);
 
       // push to the saved jobs array
       savedJobsArr.push(savedJobObj);
-      // console.log(savedJobsArr);
       // save array to local storage
       localStorage.setItem("savedJobs", JSON.stringify(savedJobsArr));
     }
-    // when unchecking
+    // when unchecked
     else {
       // identify job to remove
       var jobToRemove = form.attr("data-name");
@@ -285,13 +268,9 @@ $(document).ready(function () {
         return obj.name.indexOf(jobToRemove) === -1;
       });
 
-      // console.log(savedJobsArr);
       // save array to local storage
       localStorage.setItem("savedJobs", JSON.stringify(savedJobsArr));
     }
     
   });
-  
-
-
 });
