@@ -17,14 +17,14 @@ $(document).ready(function () {
     // first split the string into an array
     return (
       cityName
-        .toLowerCase()
-        .split(" ")
-        // map the array to return the word with the first letter capitalized
-        .map(function (word) {
-          return word.charAt(0).toUpperCase() + word.slice(1);
-        })
-        // join the arrays back together
-        .join(" ")
+      .toLowerCase()
+      .split(" ")
+      // map the array to return the word with the first letter capitalized
+      .map(function (word) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      })
+      // join the arrays back together
+      .join(" ")
     );
     //return the string out of the function
   }
@@ -142,17 +142,40 @@ $(document).ready(function () {
       success: function (response) {
         // console.log(response);
         restaurantListings.empty();
+        const restaurantHeader = $("<h2>").text("Nearby Restaurants");
+        restaurantListings.append(restaurantHeader);
         for (let i = 0; i < response.nearby_restaurants.length; i++) {
-          let newRestaurant = $(
-            `<a class="style-url right">${response.nearby_restaurants[i].restaurant.name}</a>`
-          )
+          let newRestaurant = $(`<a class="style-url right">${response.nearby_restaurants[i].restaurant.name}</a>`)
             // this url is taking them to the zomato website, should we send directely to food website?
             .attr("href", response.nearby_restaurants[i].restaurant.url)
             // blank target to open links in new tab
-            .attr("target", "_blank");
+            .attr("target", "_blank")
+            .addClass("restaurant-style");
           restaurantListings.append(newRestaurant);
           restaurantListings.append($("<br>"));
+          /* let cardAction = $("<div class='card-action'></div>"); */
+        
+         /*  var restaurantImg = $("<img>").attr("src", response.restaurants[i].featured_image); */
+          /* newRestaurant.append(restaurantImg); */
+          console.log(response);
+          /* restaurantListings.append(restaurantDiv); */
+
+          /* restaurantDiv = $("<div class='input-field restaurant-div-style'></div>")
+            .attr("name", response.nearby_restaurants[i].restaurant.name) */
+          /* 
+                    $(`<a class="style-url right">${response.nearby_restaurants[i].restaurant.name}</a>`) */
+          // this url is taking them to the zomato website, should we send directely to food website?
+          /* .attr("href", response.nearby_restaurants[i].restaurant.url)
+            // blank target to open links in new tab
+            .attr("target", "_blank")
+          
+          restaurantListings.append($("<br>"));  */
+          /* 
+          restaurantListings.append(cardAction); */
+          /*           .attr("featured_image", response.restaurants[i].featured_image);
+           */
         }
+
       },
     });
   }
