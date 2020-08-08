@@ -136,15 +136,24 @@ i.small {
     font-size: 1.5rem;
 }
 
-/* .new-div-style {
-  color: aqua !important;
-} */
-/* .restaurant-listings {
-  position: sticky;
-  top: 405px;
+
+a.restaurant-styling {
+margin: 5px;
+font-size: 24px;
+text-align: center !important;
+justify-content: center;
 }
 
-.header-container {
+/* .new-div-style {
+  color: aqua !important;
+}  */
+ .restaurant-listings {
+  
+  font-size: 24px;
+
+}
+
+/* .header-container {
   background: rgba(0, 0, 0, 0.35);
 
 }
@@ -157,4 +166,5 @@ body {
 
 main {
   flex: 1 0 auto;
-} */
+}
+ */
