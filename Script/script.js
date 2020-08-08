@@ -177,6 +177,9 @@ $(document).ready(function () {
     findJobs(locationInputCity, locationInputState);
   });
 
+  // prompt user to enter something in input-field
+ 
+
   // saved jobs button click event
   $("a.saved-jobs").on("click", function (event) {
     event.preventDefault();
@@ -268,5 +271,6 @@ $(document).ready(function () {
       // save array to local storage
       localStorage.setItem("savedJobs", JSON.stringify(savedJobsArr));
     }
+    
   });
 });
