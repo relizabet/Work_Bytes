@@ -30,6 +30,14 @@ a.saved-jobs {
   color: white !important;
 }
 
+a.head-link {
+  color: white;
+}
+
+a.head-link:hover {
+  color: rgb(244, 244, 244);
+}
+
 header h1 {
   padding: 2%;
   font-family: "Archivo Black", sans-serif;
