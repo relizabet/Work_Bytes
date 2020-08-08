@@ -97,6 +97,22 @@ $(document).ready(function () {
               .empty()
               .append(`<button class ="btn read-more${i}">Read More</button>`);
           }
+console.log(showDescription);
+          let showRestaurants = false;
+
+          // show restaurants
+          $(`button.show-restauants${i}`).on("click", function () {
+            showRestaurants = !showRestaurants;
+            let restauarants = response.nearby_restaurants[i].restaurant.name;
+            if (showRestaurants) {
+              $(`p.for-restaurants${i}`).appemd(restaurants);
+            } else {
+              showRestaurants = !showRestaurants;
+              $(`p.for-restaurants${i}`)
+              .empty()
+              .append(`<button class = "btn show-restaurants${i}">Show Restaurants</button>`);
+            }
+          })
         });
 
         // add card action div/class for card styling on job listings
@@ -149,6 +165,7 @@ $(document).ready(function () {
       }, // This inserts the api key into the HTTP header
       success: function (response) {
         restaurantListings.empty();
+        restaurantListings.addClass("card");
         const restaurantHeader = $("<h2>").text("Nearby Restaurants");
         restaurantListings.append(restaurantHeader);
         for (let i = 0; i < response.nearby_restaurants.length; i++) {
