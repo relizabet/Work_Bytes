@@ -10,11 +10,7 @@ $(document).ready(function () {
   const jobLocationCity = $("input#job-location-city");
   const jobLocationState = $("input#job-location-state");
 
-<<<<<<< HEAD
-  $('.collapsible').collapsible();
-=======
   // save jobs into empty array
->>>>>>> 417b5489d8fa1a97b15b26ca45587db07d0a9a16
   let savedJobsArr = [];
 
   // apikey for The Muse
@@ -96,13 +92,6 @@ $(document).ready(function () {
             `<i style="float:left;" class="small material-icons">domain</i>`
           )
           .append(`<p>${response.results[i].company.name}</p>`)
-<<<<<<< HEAD
-          // needs to truncate // extract to .val()?
-          //   
-          // limit to 2 characters
-          .append(`<p>${response.results[i].locations[0].name}</p>`);
-
-=======
           .append(
             `<p class="for-description${i}" style="margin: .5em;"><button class ="btn read-more${i}">Read More</button></p>`
           )
@@ -131,7 +120,6 @@ $(document).ready(function () {
         });
 
         // add card action div/class for card styling on job listings
->>>>>>> 417b5489d8fa1a97b15b26ca45587db07d0a9a16
         let cardAction = $("<div class='card-action'></div>");
         newDiv.append(cardAction)
         /* 
@@ -189,15 +177,9 @@ $(document).ready(function () {
         restaurantListings.addClass("card");
         for (let i = 0; i < response.nearby_restaurants.length; i++) {
           let newRestaurant = $(
-<<<<<<< HEAD
-              `<a class="style-url right">${response.nearby_restaurants[i].restaurant.name}</a>`
-            )
-            // this url is taking them to the zomato website, should we send directely to food website?
-=======
             `<a class="style-url right">${response.nearby_restaurants[i].restaurant.name}</a>`
           )
             // takes user to zomato page for rest
->>>>>>> 417b5489d8fa1a97b15b26ca45587db07d0a9a16
             .attr("href", response.nearby_restaurants[i].restaurant.url)
             // blank target to open links in new tab
             .attr("target", "_blank")
@@ -241,12 +223,6 @@ $(document).ready(function () {
       newDiv
         .append(`<h4>${savedJobsArr[i].name}</h4>`)
         .append(`<p>${savedJobsArr[i].company}</p>`)
-<<<<<<< HEAD
-        // needs to truncate // extract to .val()?
-        //   .append(`<p>${response.results[i].contents}<p>`)
-        // limit to 2 characters
-=======
->>>>>>> 417b5489d8fa1a97b15b26ca45587db07d0a9a16
         .append(`<p>${savedJobsArr[i].location}</p>`);
 
       let cardAction = $("<div class='card-action'></div>");
@@ -259,26 +235,12 @@ $(document).ready(function () {
       cardAction.append("<i class='tiny material-icons'>chevron_right</i>");
       cardAction.append(applyNow);
 
-<<<<<<< HEAD
-      // <i class="large material-icons">insert_chart</i>
-
-      // let applyIcon = $("<i class='small material-icons'></i>")
-
-      // appending checked checkbox
-      let newForm = $(`<form action="#">
-                    <p><label><input type="checkbox" checked /><span>Save this job</span></label></p></form>`)
-=======
       let newForm = $(`<form action="#">
         <p><label><input type="checkbox" checked /><span>Save this job</span></label></p></form>`)
->>>>>>> 417b5489d8fa1a97b15b26ca45587db07d0a9a16
         .attr("data-name", savedJobsArr[i].name)
         .attr("data-company", savedJobsArr[i].company)
         .attr("data-location", savedJobsArr[i].location)
         .attr("data-apply", savedJobsArr[i].apply);
-<<<<<<< HEAD
-      // newDiv.append(newForm);
-=======
->>>>>>> 417b5489d8fa1a97b15b26ca45587db07d0a9a16
       cardAction.append(newForm);
     }
   });
