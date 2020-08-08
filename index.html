@@ -1,91 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>workbytes</title>
-  <link rel="stylesheet" type="text/css" href="./style.css">
+  <!-- style  -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+  <link rel="stylesheet" href="Assets/style.css" />
+  <title>Work Bytes</title>
 </head>
-<body>
-  
-</body>
-</html>
 
-  <body>
-    <!-- container div -->
-    <div class="container">
-      <!-- first row -->
-      <div class="row">
-        <div class="col s12 center-align">
-          <!-- work bytes header -->
-          <h1>Work Bytes</h1>
-          <h2>Test</h2>
-          <div></div>
-          <textarea
-            class="input-field"
-            placeholder="city"
-            id="job-location-city"
-          ></textarea>
-          <textarea
-            class="input-field"
-            placeholder="state"
-            id="job-location-state"
-            maxlength="2"
-          ></textarea>
-          <textarea
-            class="input-field"
-            placeholder="country"
-            id="job-location-country"
-            maxlength="2"
-          ></textarea>
-          <!-- find jobs button -->
-          <button class="btn find-jobs">Finds jobs!</button>
+<body>
+  <!-- testing for pull request -->
+  <nav>
+    <div class="nav-wrapper teal darken-1">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="" class="saved-jobs">Saved Jobs</a></li>
+      </ul>
+    </div>
+  </nav>
+  <header class="center-align work-bytes-heading">
+    <h1>WORK BYTES</h1>
+    <h2 class="header col s12">Choose your next role next to the best restaurant in town</h5>
+      <div class="container">
+        <!-- first row -->
+        <div class="row">
+
+          <div class="col s12 center-align">
+            <!-- work bytes header -->
+            <div></div>
+
+            <div class="row">
+              
+                <form action="/action_page.php">
+                 
+                <div class="col s12 m6 ">
+                  <input placeholder="" id="job-location-city" name="job-location-city" required  type="text" class="input-field">
+                  <label for="city" class="label-text">CITY</label>
+                </div>
+
+                <div class="col s12 m6 input-style">
+                  <input placeholder="" id="job-location-state" type="text" class="input-field">
+                  <label for="state" class="label-text">STATE</label>
+                </div>
+
+                <div class="col s12 m6 input-style">
+                  <input placeholder="" id="job-location-country" type="text" class="input-field">
+                  <label for="state" class="label-text">STATE</label>
+                </div>
+              </form>
+            </div>
+            <div class="button-space">
+              <button class="btn waves-effect find-jobs white grey-text text-darken-4 " type="submit">
+                Find jobs!
+              </button>
+            </div>
+          </div>
         </div>
       </div>
   </header>
-  
   <!-- container div -->
-          <div class="right saved-jobs-link">
-            <a href="" class="saved-jobs">Saved Jobs</a>
-          </div>
+
+  <!-- second row -->
+  <div class="container">
+    <div class="row">
+      <!-- first column for job listings -->
+      <div class="col s12 m5 job-listings"></div>
+      <!-- second column for restaurant listings -->
+      <div class="col s5 restaurant-listings card right"></div>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+  <!-- <footer class="page-footer">
+      <div class="footer-copyright">
+        <div class="container">
+        © 2020 Copyright Text
+        <p class="grey-text text-lighten-4 right">Happily created by the hangry members of the Work Bytes Team</p>
         </div>
-    </header>
-    <!-- container div -->
-
-    <!-- second row -->
-    <div class="container">
-      <div class="row">
-        <!-- first column for job listings -->
-        <div class="col s12 m5 job-listings"></div>
-        <!-- second column for restaurant listings -->
-        <div class="col s5 restaurant-listings card right"></div>
       </div>
-    </div>
-  </div>
-  </div>
-
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
-  <script src="Script/script.js"></script>
-</body>
-
-<!-- Compiled and minified JavaScript -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="Script/script.js"></script>
-
-<footer class="page-footer teal lighten-2">
-  <div class="footer-copyright black-text text-darken-2">
-    <div class="container">
-      © 2020 Copyright Text
-      <p class="black-text text-darken-4 right">Happily created by the hangry members of the Work Bytes Team</p>
-    </div>
-  </div>
-</footer>
+    </footer> -->
 </body>
 
 </html>
