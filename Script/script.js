@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+  $('.modal').modal();
   // get latitude and longitude
   let lat;
   let lon;
