@@ -29,6 +29,10 @@ header h2 {
   font-size: 1.7em;
 }
 
+body {
+  background-color: black;
+}
+
 /* input styling */
 div input.input-field {
   background-color: rgba(255, 255, 255, 0.571) !important;
@@ -144,3 +148,35 @@ a.restaurant-styling {
   font-size: 24px;
 }
 
+.modal-content {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #37373b !important;
+  height: 100%;
+  color: white;
+}
+
+.btn {
+  width: 50%;
+  height: 20%;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bolder;
+  font-size: xx-large;
+}
+
+.saved-jobs {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bolder;
+  font-size: xx-large;
+}
+
+.waves-effect {
+  color:red;
+}
+
+.best {
+  padding: 2%;
+  font-family: "Archivo Black", sans-serif;
+  color: white;
+  text-shadow: 1px 2px 2px rgb(14, 33, 16);
+  font-size: 2em;
+}
