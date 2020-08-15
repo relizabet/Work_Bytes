@@ -44,7 +44,7 @@ To run the program please visit the <a href="https://relizabet.github.io/Work_By
 
 ### Examples of Program in Use
 
-![A Picture]()
+![A Picture](https://github.com/relizabet/Work_Bytes/blob/Bremah-style/Assets/Annotation%202020-08-08%20150100.png)
 
 ## Challenges
 

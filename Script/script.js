@@ -69,20 +69,34 @@ $(document).ready(function () {
         newDiv
           .append(`<h4>${response.results[i].name}</h4>`)
           .append(
-            `<i style="float:left" class="small material-icons">domain</i>`
+            `<i style="float:left;" class="small material-icons">domain</i>`
           )
           .append(`<p>${response.results[i].company.name}</p>`)
           .append(
-            `<p class="for-description${i}"><button class ="btn read-more${i}">Read More</button></p>`
+            `<p class="for-description${i}" style="margin: .5em;"><button class ="btn read-more${i}">Read More</button></p>`
           )
           .append(
-            `<i style="float:left" class="small material-icons">location_on</i>`
+            `<i style="float:left;" class="small material-icons">location_on</i>`
           )
-          .append(`<p>${response.results[i].locations[0].name}</p>`);
+          .append(
+            `<p style="margin: .2em;">${response.results[i].locations[0].name}</p>`
+          );
+
+        let showDescription = false;
 
         // get job description information
         $(`button.read-more${i}`).on("click", function () {
-          $(`p.for-description${i}`).append(response.results[i].contents);
+          // changes boolean to true
+          showDescription = !showDescription;
+          let description = response.results[i].contents;
+          if (showDescription) {
+            $(`p.for-description${i}`).append(description);
+          } else {
+            showDescription = !showDescription;
+            $(`p.for-description${i}`)
+              .empty()
+              .append(`<button class ="btn read-more${i}">Read More</button>`);
+          }
         });
 
         // add card action div/class for card styling on job listings
@@ -162,6 +176,9 @@ $(document).ready(function () {
     // call jobs
     findJobs(locationInputCity, locationInputState);
   });
+
+  // prompt user to enter something in input-field
+ 
 
   // saved jobs button click event
   $("a.saved-jobs").on("click", function (event) {
@@ -254,5 +271,6 @@ $(document).ready(function () {
       // save array to local storage
       localStorage.setItem("savedJobs", JSON.stringify(savedJobsArr));
     }
+    
   });
 });

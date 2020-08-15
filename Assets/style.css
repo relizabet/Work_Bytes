@@ -33,7 +33,11 @@ header h2 {
 div input.input-field {
   background-color: rgba(255, 255, 255, 0.571) !important;
   border-color: rgba(194, 194, 194, 0.571) !important;
+<<<<<<< HEAD
   color: rgb(255, 255, 255) !important;
+=======
+  color: rgb(0, 0, 0) !important;
+>>>>>>> 417b5489d8fa1a97b15b26ca45587db07d0a9a16
   padding-left: 3% !important;
   margin-top: 10% !important;
 }
@@ -143,3 +147,4 @@ a.restaurant-styling {
 .restaurant-listings {
   font-size: 24px;
 }
+
